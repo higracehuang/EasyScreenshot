@@ -83,21 +83,44 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        @objc private func actionCaptureEntireScreen(_ sender: Any?) {
-            ///TODO: add action
-        }
-        
-        @objc private func actionSelectArea(_ sender: Any?) {
-            ///TODO: add action
-        }
-        
-        @objc private func actionCaptureWindow(_ sender: Any?) {
-            ///TODO: add action
-        }
-        
         @objc private func actionExitApp(_ sender: Any?) {
             /// Exit the app
             NSApp.terminate(self)
+        }
+        
+        enum ScreenshotType {
+            case EntireScreen
+            case Window
+            case UserSelection
+        }
+        
+        @objc private func actionCaptureEntireScreen(_ sender: Any?) {
+            screenshot(type: .EntireScreen)
+        }
+        
+        @objc private func actionSelectArea(_ sender: Any?) {
+            screenshot(type: .UserSelection)
+        }
+        
+        @objc private func actionCaptureWindow(_ sender: Any?) {
+            screenshot(type: .Window)
+        }
+        
+        func screenshot(type: ScreenshotType) {
+            let task = Process()
+            task.launchPath = "/usr/sbin/screencapture"
+            
+            switch type {
+            case .EntireScreen:
+                task.arguments = ["-cm"]
+            case .Window:
+                task.arguments = ["-cw"]
+            case .UserSelection:
+                task.arguments = ["-cs"]
+            }
+            
+            task.launch()
+            task.waitUntilExit()
         }
     }
 
@@ -105,4 +128,5 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         menuExtrasConfigurator = .init()
     }
 }
+
 
