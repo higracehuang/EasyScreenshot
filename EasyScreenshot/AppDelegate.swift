@@ -67,7 +67,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 )
                 itemCaptureWindow.target = self
                 mainMenu.addItem(itemCaptureWindow)
-
+                
                 /// Creating a divider
                 mainMenu.addItem(.separator())
                 
@@ -123,10 +123,14 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             task.waitUntilExit()
         }
     }
-
+    
     func applicationDidFinishLaunching(_ notification: Notification) {
         menuExtrasConfigurator = .init()
+        
+        if let window = NSApplication.shared.windows.first {
+            window.close()
+        }
+        
     }
 }
-
 
