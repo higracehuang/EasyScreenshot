@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06D2281F292936DE0033EABE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06D2281E292936DE0033EABE /* Info.plist */; };
 		06F206DB29103C240073B4A6 /* EasyScreenshotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F206DA29103C240073B4A6 /* EasyScreenshotApp.swift */; };
 		06F206DD29103C240073B4A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F206DC29103C240073B4A6 /* ContentView.swift */; };
 		06F206DF29103C270073B4A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F206DE29103C270073B4A6 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		06D2281E292936DE0033EABE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06F206D729103C240073B4A6 /* EasyScreenshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyScreenshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06F206DA29103C240073B4A6 /* EasyScreenshotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyScreenshotApp.swift; sourceTree = "<group>"; };
 		06F206DC29103C240073B4A6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +40,7 @@
 		06F206CE29103C240073B4A6 = {
 			isa = PBXGroup;
 			children = (
+				06D2281E292936DE0033EABE /* Info.plist */,
 				06F206D929103C240073B4A6 /* EasyScreenshot */,
 				06F206D829103C240073B4A6 /* Products */,
 			);
@@ -132,6 +135,7 @@
 			files = (
 				06F206E229103C270073B4A6 /* Preview Assets.xcassets in Resources */,
 				06F206DF29103C270073B4A6 /* Assets.xcassets in Resources */,
+				06D2281F292936DE0033EABE /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,17 +276,21 @@
 				CODE_SIGN_ENTITLEMENTS = EasyScreenshot/EasyScreenshot.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"EasyScreenshot/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Capture to Paste";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.1.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.unicornproject.EasyScreenshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -298,17 +306,21 @@
 				CODE_SIGN_ENTITLEMENTS = EasyScreenshot/EasyScreenshot.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"EasyScreenshot/Preview Content\"";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Capture to Paste";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 1.1.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.unicornproject.EasyScreenshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
