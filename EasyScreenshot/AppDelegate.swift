@@ -5,132 +5,86 @@
 //  Created by Le Huang on 10/31/22.
 //
 
-import AppKit
+import SwiftUI
 
-final class AppDelegate: NSObject, NSApplicationDelegate {
-    
-    private var menuExtrasConfigurator: MacExtrasConfigurator?
-    
-    final private class MacExtrasConfigurator: NSObject {
+class AppDelegate: NSObject, NSApplicationDelegate {
+    var statusBarItem: NSStatusItem?
+    func applicationDidFinishLaunching(_ notification: Notification) {
         
-        private var statusBar: NSStatusBar
-        private var statusItem: NSStatusItem
-        
-        override init() {
-            statusBar = NSStatusBar.system
-            statusItem = statusBar.statusItem(withLength: NSStatusItem.squareLength)
-            super.init()
-            createMenu()
+        statusBarItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+        if let statusBarButton = statusBarItem?.button {
+            statusBarButton.image = NSImage(
+                systemSymbolName: "cursorarrow.rays",
+                accessibilityDescription: nil
+            )
         }
         
-        private func createMenu() {
-            if let statusBarButton = statusItem.button {
-                statusBarButton.image = NSImage(
-                    systemSymbolName: "cursorarrow.rays",
-                    accessibilityDescription: nil
-                )
-                
-                let mainMenu = NSMenu()
-                
-                /// Creating menu item: area capture
-                let itemSelectArea = NSMenuItem(
-                    title: "Select an area",
-                    action: #selector(Self.actionSelectArea(_:)),
-                    keyEquivalent: "")
-                itemSelectArea.image = NSImage(
-                    systemSymbolName: "rectangle.dashed",
-                    accessibilityDescription: nil
-                )
-                itemSelectArea.target = self
-                mainMenu.addItem(itemSelectArea)
-                
-                /// Creating menu item: entire screen capture
-                let itemCaptureEntireScreen = NSMenuItem(
-                    title: "Screenshot the entire screen",
-                    action: #selector(Self.actionCaptureEntireScreen(_:)),
-                    keyEquivalent: "")
-                itemCaptureEntireScreen.image = NSImage(
-                    systemSymbolName: "macwindow.on.rectangle",
-                    accessibilityDescription: nil
-                )
-                itemCaptureEntireScreen.target = self
-                mainMenu.addItem(itemCaptureEntireScreen)
-                
-                /// Creating menu item: window capture
-                let itemCaptureWindow = NSMenuItem(
-                    title: "Capture a window",
-                    action: #selector(self.actionCaptureWindow(_:)),
-                    keyEquivalent: "")
-                itemCaptureWindow.image = NSImage(
-                    systemSymbolName: "macwindow",
-                    accessibilityDescription: nil
-                )
-                itemCaptureWindow.target = self
-                mainMenu.addItem(itemCaptureWindow)
-                
-                /// Creating a divider
-                mainMenu.addItem(.separator())
-                
-                /// Creating menu item:  quit the app
-                let itemQuit = NSMenuItem(
-                    title: "Quit EasyScreenshot",
-                    action: #selector(self.actionExitApp(_:)),
-                    keyEquivalent: "")
-                itemQuit.target = self
-                mainMenu.addItem(itemQuit)
-                
-                statusItem.menu = mainMenu
-            }
-        }
+        let mainMenu = NSMenu()
         
-        @objc private func actionExitApp(_ sender: Any?) {
-            /// Exit the app
-            NSApp.terminate(self)
-        }
+        /// Creating menu item: area capture
+        let itemSelectArea = NSMenuItem(
+            title: "Select an area",
+            action: #selector(Self.actionSelectArea(_:)),
+            keyEquivalent: "")
+        itemSelectArea.image = NSImage(
+            systemSymbolName: "rectangle.dashed",
+            accessibilityDescription: nil
+        )
+        itemSelectArea.target = self
+        mainMenu.addItem(itemSelectArea)
         
-        enum ScreenshotType {
-            case EntireScreen
-            case Window
-            case UserSelection
-        }
+        /// Creating menu item: entire screen capture
+        let itemCaptureEntireScreen = NSMenuItem(
+            title: "Screenshot the entire screen",
+            action: #selector(Self.actionCaptureEntireScreen(_:)),
+            keyEquivalent: "")
+        itemCaptureEntireScreen.image = NSImage(
+            systemSymbolName: "macwindow.on.rectangle",
+            accessibilityDescription: nil
+        )
+        itemCaptureEntireScreen.target = self
+        mainMenu.addItem(itemCaptureEntireScreen)
         
-        @objc private func actionCaptureEntireScreen(_ sender: Any?) {
-            screenshot(type: .EntireScreen)
-        }
+        /// Creating menu item: window capture
+        let itemCaptureWindow = NSMenuItem(
+            title: "Capture a window",
+            action: #selector(self.actionCaptureWindow(_:)),
+            keyEquivalent: "")
+        itemCaptureWindow.image = NSImage(
+            systemSymbolName: "macwindow",
+            accessibilityDescription: nil
+        )
+        itemCaptureWindow.target = self
+        mainMenu.addItem(itemCaptureWindow)
         
-        @objc private func actionSelectArea(_ sender: Any?) {
-            screenshot(type: .UserSelection)
-        }
+        /// Creating a divider
+        mainMenu.addItem(.separator())
         
-        @objc private func actionCaptureWindow(_ sender: Any?) {
-            screenshot(type: .Window)
-        }
+        /// Creating menu item:  quit the app
+        let itemQuit = NSMenuItem(
+            title: "Quit EasyScreenshot",
+            action: #selector(self.actionExitApp(_:)),
+            keyEquivalent: "")
+        itemQuit.target = self
+        mainMenu.addItem(itemQuit)
         
-        func screenshot(type: ScreenshotType) {
-            let task = Process()
-            task.launchPath = "/usr/sbin/screencapture"
-            
-            switch type {
-            case .EntireScreen:
-                task.arguments = ["-cm"]
-            case .Window:
-                task.arguments = ["-cw"]
-            case .UserSelection:
-                task.arguments = ["-cs"]
-            }
-            
-            task.launch()
-            task.waitUntilExit()
-        }
+        statusBarItem?.menu = mainMenu
     }
     
-    func applicationDidFinishLaunching(_ notification: Notification) {
-        menuExtrasConfigurator = .init()
-        
-        if let window = NSApplication.shared.windows.first {
-            window.close()
-        }
-        
+    @objc private func actionExitApp(_ sender: Any?) {
+        /// Exit the app
+        NSApp.terminate(self)
+    }
+    
+    @objc private func actionCaptureEntireScreen(_ sender: Any?) {
+        ScreenCaptureUtil.screenshot(type: .EntireScreen)
+    }
+    
+    @objc private func actionSelectArea(_ sender: Any?) {
+        ScreenCaptureUtil.screenshot(type: .UserSelection)
+    }
+    
+    @objc private func actionCaptureWindow(_ sender: Any?) {
+        ScreenCaptureUtil.screenshot(type: .Window)
     }
 }
-

@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		06D2281F292936DE0033EABE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 06D2281E292936DE0033EABE /* Info.plist */; };
+		06D2282D292DA9660033EABE /* ScreenCaptureUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D2282C292DA9660033EABE /* ScreenCaptureUtil.swift */; };
 		06F206DB29103C240073B4A6 /* EasyScreenshotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F206DA29103C240073B4A6 /* EasyScreenshotApp.swift */; };
-		06F206DD29103C240073B4A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F206DC29103C240073B4A6 /* ContentView.swift */; };
+		06F206DD29103C240073B4A6 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F206DC29103C240073B4A6 /* EmptyView.swift */; };
 		06F206DF29103C270073B4A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F206DE29103C270073B4A6 /* Assets.xcassets */; };
 		06F206E229103C270073B4A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06F206E129103C270073B4A6 /* Preview Assets.xcassets */; };
 		06F206EA2910529B0073B4A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F206E92910529B0073B4A6 /* AppDelegate.swift */; };
@@ -17,9 +18,10 @@
 
 /* Begin PBXFileReference section */
 		06D2281E292936DE0033EABE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06D2282C292DA9660033EABE /* ScreenCaptureUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCaptureUtil.swift; sourceTree = "<group>"; };
 		06F206D729103C240073B4A6 /* EasyScreenshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyScreenshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06F206DA29103C240073B4A6 /* EasyScreenshotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyScreenshotApp.swift; sourceTree = "<group>"; };
-		06F206DC29103C240073B4A6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		06F206DC29103C240073B4A6 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		06F206DE29103C270073B4A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06F206E129103C270073B4A6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		06F206E329103C270073B4A6 /* EasyScreenshot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EasyScreenshot.entitlements; sourceTree = "<group>"; };
@@ -58,8 +60,9 @@
 			isa = PBXGroup;
 			children = (
 				06F206DA29103C240073B4A6 /* EasyScreenshotApp.swift */,
+				06D2282C292DA9660033EABE /* ScreenCaptureUtil.swift */,
 				06F206E92910529B0073B4A6 /* AppDelegate.swift */,
-				06F206DC29103C240073B4A6 /* ContentView.swift */,
+				06F206DC29103C240073B4A6 /* EmptyView.swift */,
 				06F206DE29103C270073B4A6 /* Assets.xcassets */,
 				06F206E329103C270073B4A6 /* EasyScreenshot.entitlements */,
 				06F206E029103C270073B4A6 /* Preview Content */,
@@ -146,8 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06D2282D292DA9660033EABE /* ScreenCaptureUtil.swift in Sources */,
 				06F206EA2910529B0073B4A6 /* AppDelegate.swift in Sources */,
-				06F206DD29103C240073B4A6 /* ContentView.swift in Sources */,
+				06F206DD29103C240073B4A6 /* EmptyView.swift in Sources */,
 				06F206DB29103C240073B4A6 /* EasyScreenshotApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
